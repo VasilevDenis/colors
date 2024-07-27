@@ -32,10 +32,7 @@ function App() {
     } else {
       // If input length is not 7 characters, clear error message and maintain background color
       setRgb('');
-      if (hexValue.length === 0) {
-        // Reset background color if input is empty
-        setBackgroundColor('#ffffff');
-      }
+      setBackgroundColor('#ffffff');
     }
   };
 
