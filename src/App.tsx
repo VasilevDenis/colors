@@ -26,8 +26,9 @@ function App() {
           setRgb(`rgb(${rgbValue.r}, ${rgbValue.g}, ${rgbValue.b})`);
         }
       } else {
-        // If HEX is invalid, show error message
+        // If HEX is invalid, show error message and maintain background color
         setRgb('Неверный HEX цвет');
+        setBackgroundColor('#ffffff');
       }
     } else {
       // If input length is not 7 characters, clear error message and maintain background color
