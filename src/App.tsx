@@ -1,39 +1,41 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import hexToRgb from './converter';
 
 function App() {
-  const [hex, setHex] = useState('');
-  const [rgb, setRgb] = useState('');
-  const [backgroundColor, setBackgroundColor] = useState('#ffffff'); // Фоновый цвет по умолчанию
+  const [hex, setHex] = useState<string>('');
+  const [rgb, setRgb] = useState<string>('');
+  const [backgroundColor, setBackgroundColor] = useState<string>('#ffffff'); // Default background color
 
-  const handleHexChange = (e) => {
-    const hexValue = e.target.value;
+  const handleHexChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const hexValue = e.target.value; // Now TypeScript understands this is an input element
     setHex(hexValue);
 
-    // Проверяем длину ввода
+    // Check input length
     if (hexValue.length === 7) {
-      // Проверяем, является ли ввод допустимым HEX цветом
+      // Check if input is a valid HEX color
       const isValidHex = /^#[0-9A-Fa-f]{6}$|^#[0-9A-Fa-f]{3}$/.test(hexValue);
-      
+
       if (isValidHex) {
-        // Меняем фон в соответствии с HEX значением
+        // Update background color directly from HEX value
         setBackgroundColor(hexValue);
 
-        // Конвертируем HEX в RGB и устанавливаем rgb состояние
+        // Convert HEX to RGB and set rgb state
         const rgbValue = hexToRgb(hexValue);
         if (rgbValue) {
           setRgb(`rgb(${rgbValue.r}, ${rgbValue.g}, ${rgbValue.b})`);
         }
       } else {
-        // Если HEX неверен, показываем сообщение об ошибке
-        setRgb('Ошибка!');
+        // If HEX is invalid, show error message
+        setRgb('Неверный HEX цвет');
       }
     } else {
-      // Если длина ввода не 7 символов, убираем сообщение об ошибке и сохраняем цвет фона
+      // If input length is not 7 characters, clear error message and maintain background color
       setRgb('');
-      // Сбрасываем цвет фона, если поле ввода пустое
-      setBackgroundColor('#ffffff');
+      if (hexValue.length === 0) {
+        // Reset background color if input is empty
+        setBackgroundColor('#ffffff');
+      }
     }
   };
 
