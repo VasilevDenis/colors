@@ -1,0 +1,36 @@
+#root {
+  margin: 0 auto;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  margin: 0; /* Remove auto margin to ensure full width */
+  padding: 0 20px; /* Optional: Add some horizontal padding for better spacing */
+  transition: background-color 0.5s ease; /* Smooth transition for background color changes */
+  color: #333; /* Default text color */
+}
+
+input {
+  padding: 10px; /* Add padding to the input for better touch targets */
+  border: 1px solid #ccc; /* Add a light border */
+  border-radius: 4px; /* Round the corners */
+  width: 100%; /* Make input responsive */
+  max-width: 300px; /* Optional: Set a max width for input */
+}
+
+.rgb {
+  margin-top: 20px; /* Space above the RGB text */
+  font-size: 1.2em; /* Increase font size for better visibility */
+  background-color: white;
+  padding: 5px;
+  width: 100%;
+  max-width: 300px;
+  min-height: 30px;
+  color: black;
+  border: #333 1px solid;
+}
